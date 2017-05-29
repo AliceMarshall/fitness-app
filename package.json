@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/AliceMarshall/fitness-app/issues"
   },
-  "homepage": "https://github.com/AliceMarshall/fitness-app#readme"
+  "homepage": "https://github.com/AliceMarshall/fitness-app#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
 }

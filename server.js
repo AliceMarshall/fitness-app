@@ -1,27 +1,10 @@
 const express = require('express');
-const morgan  = require('morgan');
-const app = express();
+const port    = process.env.PORT || 4000;
+const app     = express();
+const dest    = `${__dirname}/public`;
 
-app.use(morgan('dev'));
+app.use(express.static(dest));
 
-app.set("views", `${__dirname}/views`);
+app.get('/*', (req, res) => res.sendFile(`${dest}/index.html`));
 
-
-app.all('*', (req, res, next) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  next();
-});
-
-app.get('/', (req, res) => {
-  res.end('Welcome to the homepage!');
-});
-
-app.get('/about', (req, res) => {
-  res.end('Welcome to the about page!');
-});
-
-app.get('*', (req, res) => {
-  res.end('404!');
-});
-
-app.listen(3000, () => console.log('Express is up and running'));
+app.listen(port, () => console.log(`Express has started on port: ${port}`));
